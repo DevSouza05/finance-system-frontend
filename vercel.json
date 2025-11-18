@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/frontend/js/:path*",
+      "destination": "/frontend/js/:path*"
+    },
+    {
+      "source": "/frontend/style/:path*",
+      "destination": "/frontend/style/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/:path*.html"
+    }
+  ]
+}
