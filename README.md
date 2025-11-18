@@ -1,5 +1,40 @@
 # finance-system-frontend
 
+This project is a simple, client-side financial management application. It allows users to register, log in, and track their income and expenses.
+
+## Application Flow
+
+Here is a breakdown of the application's structure and logic to help new developers get started.
+
+### 1. Authentication and Page Protection
+
+-   **User Storage**: User registration and login details (username and password) are stored in the browser's **`localStorage`**. The data is stored in a key named `users`.
+-   **Registration (`register.html`)**: New users can register with a unique username and a password. The credentials are saved to `localStorage`.
+-   **Login (`login.html`)**: Users log in with their credentials. Upon successful login, the username is stored in **`sessionStorage`** under the key `loggedInUser` to maintain the session.
+-   **Page Protection**: The main application page (`index.html`) is protected. The `auth.js` script checks if `loggedInUser` exists in `sessionStorage`. If not, it redirects the user to the login page (`login.html`).
+-   **Logout**: The "Sair" (Logout) button on the main page removes the `loggedInUser` from `sessionStorage` and redirects the user back to the login page.
+
+### 2. Main Application (`index.html`)
+
+-   **Data Storage**: All financial data (transactions) is stored in **`localStorage`**. The data is specific to each user and is stored under a dynamic key: `finance_data_{username}`.
+-   **Data Structure**: The financial data is organized by month. It's a JSON object where each key is a month in `YYYY-MM` format, and the value is an array of transaction objects.
+-   **Transaction Object**: Each transaction has the following properties:
+    -   `desc`: Description of the transaction.
+    -   `amount`: The transaction amount.
+    -   `type`: "Entrada" (Income) or "Saída" (Expense).
+    -   `paid`: A boolean indicating the status of the transaction.
+-   **Core Functionality**:
+    -   **Adding Transactions**: Users can add new income or expense transactions through the form. The transaction is saved to the current month's data in `localStorage`.
+    -   **Viewing Transactions**: Transactions are displayed in a table, grouped by month. A dropdown menu allows users to switch between different months.
+    -   **Deleting Transactions**: Users can delete transactions, which removes them from `localStorage`.
+    -   **Updating Status**: Users can mark transactions as "paid" using a checkbox, and the status is updated in `localStorage`.
+    -   **Resume**: The top section of the page displays a summary of total income, expenses, and the balance for the selected month.
+
+### 3. Scripts
+
+-   **`auth.js`**: Handles all authentication-related logic: registration, login, logout, and page protection. It is loaded on `login.html`, `register.html`, and `index.html`.
+-   **`main.js`**: Contains the core application logic for the financial management page (`index.html`). It handles adding, deleting, and displaying transactions, as well as calculating the summary.
+
 ## Vercel Deployment Instructions
 
 To deploy this project to Vercel, follow these steps:
