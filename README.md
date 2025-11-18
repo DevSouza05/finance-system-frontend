@@ -9,13 +9,14 @@ Here is a breakdown of the application's structure and logic to help new develop
 ### 1. Authentication and Page Protection
 
 -   **User Storage**: User registration and login details (username and password) are stored in the browser's **`localStorage`**. The data is stored in a key named `users`.
--   **Registration (`register.html`)**: New users can register with a unique username and a password. The credentials are saved to `localStorage`.
--   **Login (`login.html`)**: Users log in with their credentials. Upon successful login, the username is stored in **`sessionStorage`** under the key `loggedInUser` to maintain the session.
+-   **Registration (`register.html`) and Login (`login.html`)**: The authentication pages have been redesigned for a modern and clean user experience. They feature a centered, card-based layout that is consistent with the application's overall design.
 -   **Page Protection**: The main application pages (`index.html` and `performance.html`) are protected. The `auth.js` script checks if `loggedInUser` exists in `sessionStorage`. If not, it redirects the user to the login page (`login.html`).
--   **Logout**: The "Sair" (Logout) button on the main page removes the `loggedInUser` from `sessionStorage` and redirects the user back to the login page.
+-   **Logout**: The "Sair" (Logout) button in the vertical navigation bar removes the `loggedInUser` from `sessionStorage` and redirects the user back to the login page.
 
 ### 2. Main Application (`index.html`)
 
+-   **Layout**: The main page features a modern two-column layout with a fixed vertical navigation bar on the left and a main content area on the right.
+-   **Quick Links**: A new header bar in the main content area provides quick access to other pages, such as the "Ver Desempenho" page.
 -   **Data Storage**: All financial data (transactions) is stored in **`localStorage`**. The data is specific to each user and is stored under a dynamic key: `finance_data_{username}`.
 -   **Data Structure**: The financial data is organized by month. It's a JSON object where each key is a month in `YYYY-MM` format, and the value is an array of transaction objects.
 -   **Transaction Object**: Each transaction has the following properties:
@@ -35,21 +36,11 @@ Here is a breakdown of the application's structure and logic to help new develop
 -   This dedicated page provides a visual representation of the user's financial evolution over time.
 -   It displays a line chart showing monthly income and expenses, allowing users to track their financial progress and identify trends.
 
-### 4. Sidebar Navigation
+### 4. Scripts
 
--   A new sidebar menu has been implemented to improve navigation across the application.
--   It can be opened by clicking the hamburger icon (`&#9776;`) in the header.
--   The sidebar currently includes links to:
-    -   **Lançamentos (`index.html`)**: The main page for managing transactions.
-    -   **Ver Desempenho (`performance.html`)**: The page displaying the financial evolution chart.
--   This sidebar is designed to easily accommodate future system options.
-
-### 5. Scripts
-
--   **`auth.js`**: Handles all authentication-related logic: registration, login, logout, and page protection. It is loaded on `login.html`, `register.html`, `index.html`, and `performance.html`.
+-   **`auth.js`**: Handles all authentication-related logic: registration, login, and logout. It is loaded on the `login.html` and `register.html` pages.
 -   **`main.js`**: Contains the core application logic for the financial management page (`index.html`). It handles adding, deleting, and displaying transactions, as well as calculating the summary.
 -   **`performance.js`**: Contains the logic for rendering the financial evolution chart on the `performance.html` page.
--   **`sidebar.js`**: Manages the functionality of the sidebar menu (opening and closing).
 
 ## Vercel Deployment Instructions
 
