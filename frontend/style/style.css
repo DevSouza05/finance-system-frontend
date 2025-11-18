@@ -337,7 +337,7 @@ tbody td {
 
 .auth-header i {
     font-size: 4rem;
-    color: var(--primary-color);
+    color: var(--total-card-color);
     margin-bottom: 1rem;
 }
 
@@ -361,7 +361,7 @@ tbody td {
     padding: 0.75rem;
     border: none;
     border-radius: 8px;
-    background-color: var(--primary-color);
+    background-color: var(--total-card-color);
     color: var(--header-color);
     font-size: 1.1rem;
     font-weight: 500;
@@ -370,7 +370,7 @@ tbody td {
 }
 
 .auth-button:hover {
-    background-color: #45a049;
+    background-color: #1a7ab8; /* Darker blue for hover */
 }
 
 .auth-switch {
@@ -379,7 +379,7 @@ tbody td {
 }
 
 .auth-switch a {
-    color: var(--primary-color);
+    color: var(--total-card-color);
     font-weight: 500;
     text-decoration: none;
 }
