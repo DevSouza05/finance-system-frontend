@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const incomes = document.querySelector(".incomes");
     const expenses = document.querySelector(".expenses");
+    const creditExpensesSpan = document.querySelector(".creditExpenses");
     const total = document.querySelector(".total");
 
     const dataKey = `finance_data_${loggedInUser}`;
@@ -144,10 +145,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const totalIncomes = amountIncomes.reduce((acc, cur) => acc + cur, 0).toFixed(2);
         const totalExpenses = amountExpenses.reduce((acc, cur) => acc + cur, 0).toFixed(2);
+        const amountCreditExpenses = items
+            .filter(item => item.type === "Saída" && item.payment === "Crédito")
+            .map(item => parseFloat(item.amount));
+        const totalCreditExpenses = amountCreditExpenses.reduce((acc, cur) => acc + cur, 0).toFixed(2);
         const totalBalance = (parseFloat(totalIncomes) - parseFloat(totalExpenses)).toFixed(2);
 
         incomes.textContent = totalIncomes;
         expenses.textContent = totalExpenses;
+        creditExpensesSpan.textContent = totalCreditExpenses;
         total.textContent = totalBalance;
     }
 
