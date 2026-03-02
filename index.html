@@ -72,6 +72,26 @@
                             <option value="Saída">Saída</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="category">Categoria</label>
+                        <select id="category">
+                            <option value="">-- selecione --</option>
+                            <option value="Mercado">Mercado</option>
+                            <option value="Lazer">Lazer</option>
+                            <option value="Transporte">Transporte</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMethod">Forma de pagamento</label>
+                        <select id="paymentMethod">
+                            <option value="">-- selecione --</option>
+                            <option value="Crédito">Crédito</option>
+                            <option value="Débito">Débito</option>
+                            <option value="Pix">Pix</option>
+                        </select>
+                    </div>
                     <div class="form-group-buttons">
                         <button id="btnNew">Incluir</button>
                         <button id="btnAuxilioIA">Auxílio IA</button>
@@ -89,6 +109,8 @@
                             <tr>
                                 <th>Descrição</th>
                                 <th class="columnAmount">Valor</th>
+                                <th>Categoria</th>
+                                <th>Pagamento</th>
                                 <th class="columnType">Tipo</th>
                                 <th>Status</th>
                                 <th class="columnAction">Ação</th>

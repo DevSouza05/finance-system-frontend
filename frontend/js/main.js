@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const descItem = document.querySelector("#desc");
     const amount = document.querySelector("#amount");
     const type = document.querySelector("#type");
+    const category = document.querySelector("#category");
+    const paymentMethod = document.querySelector("#paymentMethod");
     const btnNew = document.querySelector("#btnNew");
     const monthSelect = document.querySelector("#monthSelect");
 
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     btnNew.onclick = () => {
-        if (descItem.value.trim() === "" || amount.value.trim() === "" || type.value === "") {
+        if (descItem.value.trim() === "" || amount.value.trim() === "" || type.value === "" || category.value === "" || paymentMethod.value === "") {
             return alert("Preencha todos os campos!");
         }
 
@@ -62,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
             desc: descItem.value,
             amount: amountValue.toFixed(2),
             type: type.value,
+            category: category.value,
+            payment: paymentMethod.value,
             paid: false,
         });
 
@@ -72,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         descItem.value = "";
         amount.value = "";
+        category.value = "";
+        paymentMethod.value = "";
     };
 
     function deleteItem(month, index) {
@@ -91,6 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
         tr.innerHTML = `
             <td data-label="Descrição">${item.desc}</td>
             <td data-label="Valor">R$ ${item.amount}</td>
+            <td data-label="Categoria">${item.category || ''}</td>
+            <td data-label="Pagamento">${item.payment || ''}</td>
             <td data-label="Tipo" class="columnType">
                 ${item.type === "Entrada"
                     ? '<i class="bx bxs-chevron-up-circle"></i>'
